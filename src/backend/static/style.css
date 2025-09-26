@@ -1,0 +1,142 @@
+/* ---------- General Page Styles ---------- */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("assets/bg.jpeg") no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+/* ---------- Logo ---------- */
+.logo-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.logo {
+  width: 100px;  /* small logo */
+  height: auto;
+}
+
+/* ---------- Glassmorphic Containers ---------- */
+.glass-container {
+  background: rgba(0, 0, 0, 0.4); /* darker for visibility */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  text-align: left;
+  width: 380px;
+  max-width: 90%;
+  margin: auto;
+  color: #fff;
+}
+
+/* Specific containers (optional if you want larger admin view) */
+.dashboard-container {
+  width: 600px; /* user dashboard slightly larger */
+}
+
+.admin-dashboard-container {
+  width: 800px; /* admin dashboard wider for table */
+}
+
+/* ---------- Headings ---------- */
+.glass-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* ---------- Form Elements ---------- */
+.glass-container label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.glass-container input,
+.glass-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.glass-container input::placeholder {
+  color: #ddd;
+}
+
+.glass-container button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.glass-container button:hover {
+  background: rgba(255,255,255,0.5);
+}
+
+/* ---------- Redirect Links ---------- */
+.redirect {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.redirect a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ---------- Tables (Admin Dashboard) ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  color: #fff;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  text-align: left;
+}
+
+.disable-btn, .enable-btn {
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.disable-btn {
+  background: rgba(255,0,0,0.4);
+}
+
+.disable-btn:hover {
+  background: rgba(255,0,0,0.7);
+}
+
+.enable-btn {
+  background: rgba(0,200,0,0.4);
+}
+
+.enable-btn:hover {
+  background: rgba(0,200,0,0.7);
+}

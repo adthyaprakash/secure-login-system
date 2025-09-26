@@ -1,0 +1,12 @@
+D:\vaultecintrn\venv\Scripts\Activate.ps1
+
+
+postgresss terminal -C:\Program Files\PostgreSQL\17\bin
+
+
+
+.\psql -U postgres -d vaultdb
+
+
+captcha site key = 6LeeANQrAAAAAHUaa3yyaDZj82UniF9D6sg2HgG5
+captcha secrt key = 6LeeANQrAAAAANCERRtSdlwa6ODRSy-JuJJT5Ku_
