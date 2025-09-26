@@ -10,3 +10,18 @@ postgresss terminal -C:\Program Files\PostgreSQL\17\bin
 
 captcha site key = 6LeeANQrAAAAAHUaa3yyaDZj82UniF9D6sg2HgG5
 captcha secrt key = 6LeeANQrAAAAANCERRtSdlwa6ODRSy-JuJJT5Ku_
+
+
+
+git 
+# Make sure you're on main branch
+git branch -M main  
+
+# Stage all your local files
+git add .  
+
+# Commit changes
+git commit -m "Initial project setup with updated directories"
+
+# Force push to overwrite GitHub
+git push origin main --force
