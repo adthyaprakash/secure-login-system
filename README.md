@@ -92,3 +92,38 @@ Login to PostgreSQL and create a database:
 ```sql
 CREATE DATABASE vaultdb;
 ```
+Create the users table:
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(20) DEFAULT 'user',
+    is_active BOOLEAN DEFAULT TRUE,
+    failed_attempts INTEGER DEFAULT 0
+);
+```
+### 5. Configure Database in app.py
+
+Update this function with your PostgreSQL credentials:
+
+```python
+def get_db_connection():
+    return psycopg2.connect(
+        host="localhost",
+        database="vaultdb",
+        user="postgres",
+        password="your_password_here"
+    )
+```
+### 6. Run the Application
+
+```bash
+python src/backend/app.py
+```
+The app will run at:
+```cpp
+http://127.0.0.1:5000/
+
+```
