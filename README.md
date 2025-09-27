@@ -45,3 +45,20 @@ Security features include input validation, CAPTCHA, and account lockout after f
 ---
 
 ## Project Structure
+```bash
+secure-login-system/
+│── src/
+│   ├── backend/
+│   │   ├── app.py
+│   │   ├── config.py
+│   │   ├── templates/
+│   │   │   ├── index.html
+│   │   │   ├── register.html
+│   │   │   ├── dashboard.html
+│   │   │   └── admin_dashboard.html
+│   │   ├── static/
+│   │   │   ├── style.css
+│   │   │   ├── script.js
+│   │   │   └── admin_script.js
+│── requirements.txt
+│── README.md
