@@ -62,14 +62,14 @@ secure-login-system/
 │   │   │   └── admin_script.js
 │── requirements.txt
 │── README.md
-
+```
 ## Setup Instructions
 
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/adthyaprakash/secure-login-system.git
 cd secure-login-system
-
+```
 
 ### 2. Create and activate virtual environment
 ```bash
@@ -80,3 +80,15 @@ venv\Scripts\activate
 # Linux/Mac
 python3 -m venv venv
 source venv/bin/activate
+```
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Set up PostgreSQL Database
+Login to PostgreSQL and create a database:
+
+```sql
+CREATE DATABASE vaultdb;
+```
