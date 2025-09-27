@@ -62,3 +62,21 @@ secure-login-system/
 │   │   │   └── admin_script.js
 │── requirements.txt
 │── README.md
+
+## Setup Instructions
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/adthyaprakash/secure-login-system.git
+cd secure-login-system
+
+
+### 2. Create and activate virtual environment
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Linux/Mac
+python3 -m venv venv
+source venv/bin/activate
