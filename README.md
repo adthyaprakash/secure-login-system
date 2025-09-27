@@ -29,7 +29,7 @@ Security features include input validation, CAPTCHA, and account lockout after f
 ![User Dashboard](src/backend/static/assets/user%20dashboard.png)
 
 ### Admin Dashboard
-![Admin Dashboard](src/backend/static/assets/admin%20dashboard.png)
+![Admin Dashboard](src\backend\static\assets\admindashboard.png)
 
 ---
 
