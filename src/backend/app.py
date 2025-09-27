@@ -17,10 +17,14 @@ def get_db_connection():
         host="localhost",
         database="vaultdb",
         user="postgres",
-        password="root"  # ⚠️ update with your postgres password
+        password="root"  # ⚠️ replace with your postgres password
     )
 
 # ---------- Routes ----------
+@app.route('/about_page')
+def about_page():
+    return render_template("about.html")
+
 @app.route('/')
 def login_page():
     return render_template("index.html")
@@ -146,7 +150,7 @@ def login():
 def get_users():
     try:
         conn = get_db_connection()
-        cur = conn.cursor()
+        cur = conn.cursor(cursor_factory=RealDictCursor)
         cur.execute("SELECT id, username, email, role, is_active, failed_attempts FROM users")
         users = cur.fetchall()
         cur.close()
@@ -160,22 +164,19 @@ def get_users():
 def toggle_user():
     data = request.json
     user_id = data.get('user_id')
-    activate = data.get('activate', True)
+    is_active = data.get('is_active')
 
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-
-        if activate:
+        if is_active:  # re-enable account
             cur.execute("UPDATE users SET is_active = TRUE, failed_attempts = 0 WHERE id = %s AND role != 'admin'", (user_id,))
-        else:
+        else:  # disable account
             cur.execute("UPDATE users SET is_active = FALSE WHERE id = %s AND role != 'admin'", (user_id,))
-
         conn.commit()
         cur.close()
         conn.close()
-
-        return jsonify({"message": f"User {'enabled' if activate else 'disabled'} successfully"}), 200
+        return jsonify({"message": "User status updated successfully"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

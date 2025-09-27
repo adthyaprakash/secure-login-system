@@ -1,92 +1,86 @@
-// script.js
+// -------- Register --------
+const registerForm = document.getElementById("registerForm");
+if (registerForm) {
+  registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-// Handle Login
-document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    const username = registerForm.username.value;
+    const email = registerForm.email.value;
+    const password = registerForm.password.value;
+    const confirmPassword = registerForm.confirm_password.value;
+    const role = registerForm.role.value;
+    const captcha = grecaptcha.getResponse();
 
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const captchaResponse = grecaptcha.getResponse();
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+    if (!captcha) {
+      alert("Please complete CAPTCHA!");
+      return;
+    }
 
-  if (!captchaResponse) {
-    alert("Please complete the CAPTCHA.");
-    return;
-  }
+    try {
+      const res = await fetch("/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password, role, captcha })
+      });
 
-  try {
-    const res = await fetch("/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, captcha: captchaResponse }),
-    });
+      const data = await res.json();
+      alert(data.message || data.error);
 
-    const data = await res.json();
-
-    if (res.ok) {
-      alert(data.message);
-
-      // save session data
-      sessionStorage.setItem("token", data.token);
-      sessionStorage.setItem("username", data.user.username);
-      sessionStorage.setItem("role", data.user.role);
-
-      // redirect based on role
-      if (data.user.role === "admin") {
-        window.location.href = "/admin_dashboard_page";
-      } else {
-        window.location.href = "/dashboard_page";
+      if (res.status === 201) {
+        window.location.href = "/"; // go to login page
       }
-    } else {
-      alert(data.error || "Login failed.");
-      grecaptcha.reset();
+    } catch (err) {
+      console.error("Register error:", err);
+      alert("Error connecting to server");
     }
-  } catch (err) {
-    console.error("Login error:", err);
-    alert("Something went wrong.");
-    grecaptcha.reset();
-  }
-});
+  });
+}
 
-// Handle Register
-document.getElementById("registerForm")?.addEventListener("submit", async (e) => {
-  e.preventDefault();
+// -------- Login --------
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const username = document.getElementById("username").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const confirm_password = document.getElementById("confirm_password").value.trim();
-  const role = document.getElementById("role").value;
-  const captchaResponse = grecaptcha.getResponse();
+    const email = loginForm.email.value;
+    const password = loginForm.password.value;
+    const captcha = grecaptcha.getResponse();
 
-  if (!captchaResponse) {
-    alert("Please complete the CAPTCHA.");
-    return;
-  }
-
-  if (password !== confirm_password) {
-    alert("Passwords do not match.");
-    return;
-  }
-
-  try {
-    const res = await fetch("/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, email, password, role, captcha: captchaResponse }),
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-      alert(data.message);
-      window.location.href = "/";
-    } else {
-      alert(data.error || "Registration failed.");
-      grecaptcha.reset();
+    if (!captcha) {
+      alert("Please complete CAPTCHA!");
+      return;
     }
-  } catch (err) {
-    console.error("Register error:", err);
-    alert("Something went wrong.");
-    grecaptcha.reset();
-  }
-});
+
+    try {
+      const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, captcha })
+      });
+
+      const data = await res.json();
+      alert(data.message || data.error);
+
+      if (res.status === 200) {
+        // Save user info
+        sessionStorage.setItem("username", data.user.username);
+        sessionStorage.setItem("role", data.user.role);
+        sessionStorage.setItem("token", data.token);
+
+        // Redirect based on role
+        if (data.user.role === "admin") {
+          window.location.href = "/admin_dashboard_page";
+        } else {
+          window.location.href = "/dashboard_page";
+        }
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("Error connecting to server");
+    }
+  });
+}

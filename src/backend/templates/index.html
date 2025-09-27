@@ -8,31 +8,39 @@
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-  <!-- Logo (top-left corner) -->
-  <div class="logo-container left">
-    <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo" class="logo">
-  </div>
 
-  <!-- Centered glassmorphic container -->
-  <div class="glass-container login-container">
-    <h2>Login</h2>
-    <form id="loginForm">
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" placeholder="Enter your email" required>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <span class="app-name">RBAC</span>
+    </div>
+    <div class="nav-right">
+      <ul>
+        <li><a href="/about_page">About</a></li>
+        <li><a href="/register_page">Register</a></li>
+        <li><a href="/">Login</a></li>
+      </ul>
+    </div>
+  </nav>
 
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" placeholder="Enter your password" required>
+  <!-- Page Content -->
+  <div class="page-content">
+    <div class="glass-container login-container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label>Email</label>
+        <input type="email" name="email" required>
 
-      <!-- reCAPTCHA -->
-      <div class="captcha-container">
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <!-- reCAPTCHA -->
         <div class="g-recaptcha" data-sitekey="6LeeANQrAAAAAHUaa3yyaDZj82UniF9D6sg2HgG5"></div>
-      </div>
 
-      <button type="submit">Login</button>
-    </form>
-    <p class="redirect">
-      Don’t have an account? <a href="{{ url_for('register_page') }}">Register</a>
-    </p>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don’t have an account? <a href="/register_page">Register</a></p>
+    </div>
   </div>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>

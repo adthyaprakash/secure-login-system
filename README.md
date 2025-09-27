@@ -21,6 +21,13 @@ Google reCAPTCHA to prevent brute-force attacks
 
 Glassmorphic styled frontend with HTML, CSS, and JavaScript
 
+Screenshots
+## Screenshots
+
+![Login Page](secure-login-system/src/backend/static/assets/login page.png)
+![Dashboard](secure-login-system/src/backend/static/assets/user dashboard.png)
+
+
 Project Structure
 secure-login-system/
 │── src/

@@ -7,49 +7,45 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <!-- Logo Top Left -->
-  <div class="logo-container">
-    <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo" class="logo">
-  </div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="app-title">RBAC</div>
+    <ul>
+      <li><a href="/about_page">About</a></li>
+      <li><a href="/register_page">Register</a></li>
+      <li><a href="/">Login</a></li>
+    </ul>
+  </nav>
 
-  <!-- Admin Dashboard Container -->
-  <div class="glass-container admin-dashboard-container">
-    <h2>Admin Dashboard</h2>
-    <p>Welcome, <span id="adminName"></span> (Admin)</p>
+  <!-- Page Content -->
+  <div class="page-content">
+    <div class="glass-container admin-dashboard-container">
+      <h2>Admin Dashboard</h2>
+      <p>Welcome, <span id="adminName"></span> (Admin)</p>
 
-    <h3>User Management</h3>
-    <table id="userTable">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Active</th>
-          <th>Failed Attempts</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Filled dynamically with admin_script.js -->
-      </tbody>
-    </table>
+      <h3>User Management</h3>
+      <table id="userTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Active</th>
+            <th>Failed Attempts</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Populated dynamically with admin_script.js -->
+        </tbody>
+      </table>
 
-    <button id="logoutBtn" class="btn">Logout</button>
+      <button id="logoutBtn" class="btn">Logout</button>
+    </div>
   </div>
 
   <!-- Attach Script -->
   <script src="{{ url_for('static', filename='admin_script.js') }}"></script>
-  <script>
-    // Fill admin name
-    document.getElementById("adminName").innerText =
-      sessionStorage.getItem("username") || "Admin";
-
-    // Logout
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-      sessionStorage.clear();
-      window.location.href = "/";
-    });
-  </script>
 </body>
 </html>

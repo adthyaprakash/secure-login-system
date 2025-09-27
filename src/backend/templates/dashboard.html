@@ -7,31 +7,27 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <!-- Logo top-right -->
-  <div class="logo-container right">
-    <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo" class="logo small-logo">
-  </div>
 
-  <!-- Dashboard glass container -->
-  <div class="glass-container dashboard-container">
-    <h2>User Dashboard</h2>
-    <p>Welcome, <span id="username"></span>!</p>
-    <p>You are logged in as <span id="userRole"></span>.</p>
-    <p>Your session is secure and active ✅</p>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="app-title" onclick="window.location.href='/'">.</div>
+    <ul>
+      <li><a href="/about_page">About</a></li>
+      <li><a href="/register_page">Register</a></li>
+      <li><a href="/">Login</a></li>
+    </ul>
+  </nav>
 
-    <!-- Info box -->
-    <div class="info-box">
-      <h3>Security Features</h3>
-      <ul>
-        <li>Password hashing (bcrypt)</li>
-        <li>Account lockout after failed attempts</li>
-        <li>Role-based access control</li>
-        <li>CAPTCHA protection</li>
-      </ul>
+  <!-- Page Content -->
+  <div class="page-content">
+    <div class="glass-container dashboard-container">
+      <h2>Welcome, <span id="username"></span>!</h2>
+      <p>You are logged in as <span id="userRole"></span>.</p>
+      <p class="info-text">Your session is secure and currently active.  
+         Please use the navigation bar above to explore other sections.</p>
+
+      <button id="logoutBtn" class="btn">Logout</button>
     </div>
-
-    <!-- Logout button -->
-    <button id="logoutBtn" class="btn">Logout</button>
   </div>
 
   <script>
