@@ -210,3 +210,9 @@ body {
   margin-top: 15px;
   margin-bottom: 20px;
 }
+/* Navbar logo replacement */
+.logo-large {
+  height: 160px;   /* fits neatly inside navbar */
+  width: auto;
+  cursor: pointer;
+}

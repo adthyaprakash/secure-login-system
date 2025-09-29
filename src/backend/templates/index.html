@@ -11,17 +11,16 @@
 
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="nav-left">
-      <span class="app-name">RBAC</span>
-    </div>
-    <div class="nav-right">
-      <ul>
-        <li><a href="/about_page">About</a></li>
-        <li><a href="/register_page">Register</a></li>
-        <li><a href="/">Login</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="logo-container-left">
+    <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo" class="logo-large" onclick="window.location.href='/'">
+  </div>
+  <ul>
+    <li><a href="/about_page">About</a></li>
+    <li><a href="/register_page">Register</a></li>
+    <li><a href="/">Login</a></li>
+  </ul>
+</nav>
+
 
   <!-- Page Content -->
   <div class="page-content">

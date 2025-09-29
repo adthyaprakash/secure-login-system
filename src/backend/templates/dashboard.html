@@ -10,13 +10,16 @@
 
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="app-title" onclick="window.location.href='/'">.</div>
-    <ul>
-      <li><a href="/about_page">About</a></li>
-      <li><a href="/register_page">Register</a></li>
-      <li><a href="/">Login</a></li>
-    </ul>
-  </nav>
+  <div class="logo-container-left">
+    <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo" class="logo-large" onclick="window.location.href='/'">
+  </div>
+  <ul>
+    <li><a href="/about_page">About</a></li>
+    <li><a href="/register_page">Register</a></li>
+    <li><a href="/">Login</a></li>
+  </ul>
+</nav>
+
 
   <!-- Page Content -->
   <div class="page-content">
